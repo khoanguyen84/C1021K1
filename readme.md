@@ -2,4 +2,4 @@
 
 ## Bootcamp Preparation
 
-- Lession 4: Git and HTML(khoan)
+- Lession 4: Git and HTML(khoan vu dang di hoc)
