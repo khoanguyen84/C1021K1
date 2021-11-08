@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="ProcessForm.html" method="get">
+        <table>
+            <tr>
+                <td>Search</td>
+                <td>
+                    <input type="search">
+                </td>
+            </tr>
+            <tr>
+                <td>Fullname</td>
+                <td>
+                    <input type="text" name="fullname" required>
+                    <input type="hidden" name="scaretcode" value="khoa">
+                </td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td>
+                    <select>
+                        <option value="" selected disabled>Vui lòng chọn phòng ban</option>
+                        <option value="">Kế toán</option>
+                        <option value="">Nhân sự</option>
+                        <option value="">Hành chính</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Introduce yourseft</td>
+                <td>
+                    <textarea minlength="5" maxlength="10" cols="30" rows="10" required ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>
+                    <input type="tel">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" name="password">
+                </td>
+            </tr>
+            <tr>
+                <td>Select avatar</td>
+                <td>
+                    <input type="image" src="images/avatar10.jpg">
+                    <input type="file" accept="image/*">
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" checked> Male
+                    <input type="radio" name="gender"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Languages</td>
+                <td>
+                    <input type="checkbox" name="language"> English
+                    <input type="checkbox"  name="language" checked> Japannies
+                    <input type="checkbox" name="language"> France
+                </td>
+            </tr>
+            <tr>
+                <td>Date of birth</td>
+                <td>
+                    <input type="date" min="2021-01-01" max="2021-12-31">
+                    <input type="time">
+                    <br>
+                    <input type="datetime-local">
+                </td>
+            </tr>
+            <tr>
+                <td>Link facebook</td>
+                <td>
+                    <input type="url" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Favorite</td>
+                <td>
+                    <input type="color">
+                </td>
+            </tr>
+            <tr>
+                <td>Personal ID</td>
+                <td>
+                    <input type="number" min="10">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Distance From Home to Company
+                </td>
+                <td>
+                    <input type="range" min="5" max="30" value="5">
+                </td>
+            </tr>
+            <tr>
+                <td>Month</td>
+                <td>
+                    <input type="month">
+                </td>
+            </tr>
+            <tr>
+                <td>Week</td>
+                <td>
+                    <input type="week">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Save">
+                    <input type="reset" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
