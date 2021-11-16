@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var number;
+        // do {
+        //     number = parseFloat(prompt("Nhập số:"));
+        //     console.log(number);
+        // }
+        // while (number != 0);
+
+        // var number = parseFloat(prompt("Nhập số:"));
+        // while (number != 0) {
+        //     console.log(number);
+        //     number = parseFloat(prompt("Nhập số:"));
+        // }
+
+        // let i = prompt("Enter a number");
+        // while (i != 0) {
+        //     debugger;
+        //     console.log(i);
+        //     i = prompt("Enter a number");
+        // }
+        // for (; ;) {
+        //     let i = parseFloat(prompt('nhap so'));
+        //     if (i == 0) {
+        //         alert('ko cho nhap nua');
+        //         break;
+        //     }
+        //     alert(i);
+        // }
+        // let number = parseFloat(prompt('nhap so'));
+        // for(; number !=0 ;){
+        //     alert(number);
+        //     number = parseFloat(prompt('nhap so'));
+        // }
+
+        let table = "<table border=1>";
+        for (let j = 1; j <= 10; j++) {
+            table += "<tr>";
+            for (let i = 2; i <= 9; i++) {
+                // table += `<td style='text-align:right;'>${i} x ${j} = ${i*j}</td>`;
+                table = table + "<td style='text-align:right;'>" + i + " x " + j + " = " + (i * j) + "</td>";
+            }
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.write(table);
+    </script>
+</body>
+
+</html>
