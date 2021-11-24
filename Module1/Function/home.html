@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Product name</label> <input type="text" id="pn">
+    <button onclick="add()">Save</button>
+    <br>
+    <div id="cartInfo">
+
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product name</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div>
+        <h1>Cart information</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbCart"></tbody>
+        </table>
+    </div>
+    <script>
+        let product = ["P1", "P2", "P3", "P4", "P5"];
+        let cart = [];
+        function showData() {
+            let tbody = document.getElementsByTagName('tbody')[0];
+            tbody.innerHTML = "";
+            product.forEach(function (value, index) {
+                tbody.innerHTML += `<tr>
+                                        <td>${value}</td>
+                                        <td>
+                                            <button onclick="addCart(${index})">Add Cart</button>
+                                        </td>
+                                        <td>
+                                            <button onclick="edit(${index})">Edit</button>
+                                        </td>
+                                        <td>
+                                            <button onclick="remove(${index})">Remove</button>
+                                        </td>
+                                    </tr>`
+            });
+        }
+
+        function add(){
+            let productName = document.getElementById("pn").value;
+            product.push(productName);
+            showData();
+        }
+        function edit(index) {
+            alert(index);
+        }
+
+        function remove(index) {
+            product.splice(index, 1);
+            showData();
+        }
+
+        function addCart(index){
+            cart.push(product[index]);
+            let cartInfo = document.getElementById("cartInfo");
+            cartInfo.innerHTML = `<a href="#" onclick="showCart()">Cart(${cart.length}) products</a>`;
+            showCart();
+        }
+        function showCart(){
+            let tbCart = document.getElementById('tbCart');
+            tbCart.innerHTML = "";
+            cart.forEach(function (value, index) {
+                tbCart.innerHTML += `<tr>
+                                        <td>${value}</td>
+                                        <td>
+                                            <button onclick="removeCart(${index})">remove</button>
+                                        </td>
+                                    </tr>`
+            });
+        }
+
+        function removeCart(index) {
+            cart.splice(index, 1);
+            showCart();
+        }
+
+        showData();
+    </script>
+</body>
+
+</html>
