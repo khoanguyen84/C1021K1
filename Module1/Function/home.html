@@ -34,6 +34,7 @@
             <thead>
                 <tr>
                     <th>Product name</th>
+                    <th>Quantity</th>
                     <th></th>
                 </tr>
             </thead>
@@ -42,6 +43,11 @@
     </div>
     <script>
         let product = ["P1", "P2", "P3", "P4", "P5"];
+        // let products = [
+        //     ["p1", 2, 500000],
+        //     ["p2", 12, 700000],
+        //     ["p3", 22, 550000]
+        // ]
         let cart = [];
         function showData() {
             let tbody = document.getElementsByTagName('tbody')[0];
@@ -62,7 +68,7 @@
             });
         }
 
-        function add(){
+        function add() {
             let productName = document.getElementById("pn").value;
             product.push(productName);
             showData();
@@ -76,18 +82,41 @@
             showData();
         }
 
-        function addCart(index){
-            cart.push(product[index]);
+        function addCart(index) {
+            let item = [];
+            if (cart.length == 0) {
+                item[0] = product[index];
+                item[1] = 1;
+                cart.push(item);
+            }
+            else {
+                let position = -1;
+                for (let i = 0; i < cart.length; i++) {
+                    if (cart[i][0] == product[index]) {
+                        position = i;
+                    }
+                }
+                if(position == -1){
+                    item[0] = product[index];
+                    item[1] = 1;
+                    cart.push(item);
+                }
+                else{
+                    cart[position][1] +=1;
+                }
+            }
+
             let cartInfo = document.getElementById("cartInfo");
             cartInfo.innerHTML = `<a href="#" onclick="showCart()">Cart(${cart.length}) products</a>`;
             showCart();
         }
-        function showCart(){
+        function showCart() {
             let tbCart = document.getElementById('tbCart');
             tbCart.innerHTML = "";
             cart.forEach(function (value, index) {
                 tbCart.innerHTML += `<tr>
-                                        <td>${value}</td>
+                                        <td>${value[0]}</td>
+                                        <td>${value[1]}</td>
                                         <td>
                                             <button onclick="removeCart(${index})">remove</button>
                                         </td>
