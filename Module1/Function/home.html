@@ -48,6 +48,10 @@
         //     ["p2", 12, 700000],
         //     ["p3", 22, 550000]
         // ]
+        function CartItem(name, quantity){
+            this.name = name;
+            this.quantity = quantity;
+        }
         let cart = [];
         function showData() {
             let tbody = document.getElementsByTagName('tbody')[0];
@@ -83,26 +87,33 @@
         }
 
         function addCart(index) {
-            let item = [];
+            // let item = [];
+            let item;
             if (cart.length == 0) {
-                item[0] = product[index];
-                item[1] = 1;
+                item = new CartItem(product[index], 1);
+                // item[0] = product[index];
+                // item[1] = 1;
                 cart.push(item);
             }
             else {
                 let position = -1;
                 for (let i = 0; i < cart.length; i++) {
-                    if (cart[i][0] == product[index]) {
+                    // if (cart[i][0] == product[index]) {
+                    //     position = i;
+                    // }
+                    if (cart[i].name == product[index]) {
                         position = i;
                     }
                 }
                 if(position == -1){
-                    item[0] = product[index];
-                    item[1] = 1;
+                    // item[0] = product[index];
+                    // item[1] = 1;
+                    item = new CartItem(product[index], 1);
                     cart.push(item);
                 }
                 else{
-                    cart[position][1] +=1;
+                    // cart[position][1] +=1;
+                    cart[position].quantity +=1;
                 }
             }
 
@@ -113,11 +124,13 @@
         function showCart() {
             let tbCart = document.getElementById('tbCart');
             tbCart.innerHTML = "";
-            cart.forEach(function (value, index) {
+            cart.forEach(function (cart, index) {
                 tbCart.innerHTML += `<tr>
-                                        <td>${value[0]}</td>
-                                        <td>${value[1]}</td>
+                                        <td>${cart.name}</td>
+                                        <td>${cart.quantity}</td>
                                         <td>
+                                            <button onclick="down(${index})">-</button>
+                                            <button onclick="up(${index})">+</button>
                                             <button onclick="removeCart(${index})">remove</button>
                                         </td>
                                     </tr>`
@@ -127,6 +140,18 @@
         function removeCart(index) {
             cart.splice(index, 1);
             showCart();
+        }
+
+        function up(index){
+            cart[index].quantity +=1;
+            showCart();
+        }
+
+        function down(index){
+            if(cart[index].quantity > 0){
+                cart[index].quantity -=1;
+                showCart();
+            }
         }
 
         showData();
